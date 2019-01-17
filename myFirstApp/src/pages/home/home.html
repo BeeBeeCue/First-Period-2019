@@ -9,8 +9,11 @@
   <ion-list padding>
     <ion-item *ngFor="let image of picArray">
       <ion-thumbnail item-start>
-        <img
-          [src]="image.thumbnail">
+
+        <img *ngIf="image.media_type == 'image'"
+             [src]="'http://media.mw.metropolia.fi/wbma/uploads/'+image.filename">
+        <video *ngIf="image.media_type == 'video'"
+               [src]="'http://media.mw.metropolia.fi/wbma/uploads/'+image.filename" autoplay controls loop></video>
       </ion-thumbnail>
       <h2>{{image.title}}</h2>
       <p>{{image.details}}</p>

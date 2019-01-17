@@ -10,6 +10,7 @@ import { Pic } from '../../interfaces/pic';
 export class HomePage {
   picArray: Pic[] = [];
   mediaPath = 'assets/json/test.json';
+  webMediaPath = 'http://media.mw.metropolia.fi/wbma/media';
 
   constructor(private http: HttpClient, public navCtrl: NavController) {
 
@@ -20,7 +21,7 @@ export class HomePage {
   }
 
   getImages() {
-    this.http.get<Pic[]>(this.mediaPath).subscribe(
+    this.http.get<Pic[]>(this.webMediaPath).subscribe(
       (response: Pic[]) => {
         this.picArray = response;
         console.log(response);
