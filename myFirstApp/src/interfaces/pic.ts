@@ -8,4 +8,21 @@ export interface Pic {
   media_type: string;
   mime_type: string;
   time_added: string;
+  screenshot?: string;
+  thumbnails?: object;
+}
+
+export interface User {
+  username: string;
+  password?: string;
+  email?: string;
+  time_created?: Date;
+  user_id?: number;
+  full_name?: string;
+}
+
+export interface LoginResponse {
+  message: string;
+  token: string;
+  user: User;
 }

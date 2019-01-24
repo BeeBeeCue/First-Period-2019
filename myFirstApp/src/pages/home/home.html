@@ -13,11 +13,18 @@
         <img *ngIf="image.media_type == 'image'"
              [src]="'http://media.mw.metropolia.fi/wbma/uploads/'+image.filename">
         <video *ngIf="image.media_type == 'video'"
-               [src]="'http://media.mw.metropolia.fi/wbma/uploads/'+image.filename" autoplay controls loop></video>
+               [src]="'http://media.mw.metropolia.fi/wbma/uploads/'+image.filename" controls></video>
       </ion-thumbnail>
       <h2>{{image.title}}</h2>
-      <p>{{image.details}}</p>
+      <h3>{{image.description}}</h3>
+      <h4>User id: {{image.user_id}}</h4>
+      <h5>File size: {{image.filesize}}</h5>
       <button ion-button item-end>View</button>
     </ion-item>
   </ion-list>
+
+
+
 </ion-content>
+
+
