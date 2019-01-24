@@ -20,11 +20,11 @@ export class MediaProvider {
   }
 
   getAllMedia() {
-    return this.http.get<Pic[]>(this.mediaAPI + '/media');
+    return this.http.get<Pic[]>(this.mediaAPI + 'media');
   }
 
   getSingleMedia(id) {
-    return this.http.get<Pic>(this.mediaAPI + '/media/' + id);
+    return this.http.get<Pic>(this.mediaAPI + 'media/' + id);
   }
 
   login(user: User) {

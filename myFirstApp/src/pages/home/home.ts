@@ -22,25 +22,16 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.getImages();
+    /*this.getImages();*/
+  }
+
+  ionViewDidLoad() {
+    this.getAllFiles();
   }
 
   getAllFiles() {
-    this.mediaProvider.getAllMedia().subscribe((data: Pic[]) => {
+    this.mediaProvider.getAllMedia().subscribe((data) => {
       console.log('data', data);
-      // A:
-      /*
-      this.picArray = data.map((pic: Pic) => {
-        const nameArray = pic.filename.split('.');
-        console.log('nameArray', nameArray);
-        pic.thumbnails = {
-          160: nameArray[0] + '-tn160.png',
-        };
-        console.log('pic after', pic);
-        return pic;
-      });
-      */
-      // B:
       data.forEach((pic: Pic) => {
         // add files to picArray
         this.mediaProvider.getSingleMedia(pic.file_id).
@@ -50,7 +41,7 @@ export class HomePage {
       });
     });
   }
-
+/*
   getImages() {
     this.http.get<Pic[]>(this.webMediaPath).subscribe(
       (response: Pic[]) => {
@@ -62,15 +53,7 @@ export class HomePage {
         console.log(error);
       },
     );
-  }
-
-  /*
-  showImage(image){
-    this.photoViewer.show(image);
-
-    , private photoViewer: PhotoViewer
-  }
-  */
+  }*/
 
 }
 
