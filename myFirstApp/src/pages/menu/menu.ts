@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { LoginRegisterPage } from '../login-register/login-register';
 import { LogoutPage } from '../logout/logout';
 import { MediaProvider } from '../../providers/media/media';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the MenuPage page.
@@ -15,11 +16,11 @@ import { MediaProvider } from '../../providers/media/media';
 @Component({
   selector: 'page-menu',
   template: `
-    <ion-tabs>
+    <ion-tabs [selectedIndex]="1">
       <ion-tab [root]="tab1Root" tabIcon="home" tabTitle="Home"></ion-tab>
       <ion-tab [show]="!mediaProvider.loggedIn" [root]="tab2Root" tabIcon="log-in"
                tabTitle="Login"></ion-tab>
-      <ion-tab [show]="mediaProvider.loggedIn" [root]="tab3Root" tabIcon="log-out" tabTitle="Logout"></ion-tab>
+      <ion-tab [show]="mediaProvider.loggedIn" [root]="tab3Root" tabIcon="log-out" tabTitle="Logout" (onclick)="logout()"></ion-tab>
     </ion-tabs>`,
 })
 export class MenuPage {
@@ -31,11 +32,13 @@ export class MenuPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public mediaProvider: MediaProvider,
+    private storage: Storage
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
+
 
 }

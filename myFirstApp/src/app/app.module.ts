@@ -10,6 +10,8 @@ import { MediaProvider } from '../providers/media/media';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { LogoutPage } from '../pages/logout/logout';
 import { MenuPage } from '../pages/menu/menu';
+import { IonicStorageModule } from '@ionic/storage';
+import { RegisterPage } from '../pages/register/register';
 
 
 @NgModule({
@@ -18,12 +20,14 @@ import { MenuPage } from '../pages/menu/menu';
     HomePage,
     LoginRegisterPage,
     LogoutPage,
-    MenuPage
+    MenuPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +35,8 @@ import { MenuPage } from '../pages/menu/menu';
     HomePage,
     MenuPage,
     LoginRegisterPage,
-    LogoutPage
+    LogoutPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
