@@ -12,7 +12,7 @@ import { LogoutPage } from '../pages/logout/logout';
 import { MenuPage } from '../pages/menu/menu';
 import { IonicStorageModule } from '@ionic/storage';
 import { RegisterPage } from '../pages/register/register';
-
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { RegisterPage } from '../pages/register/register';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    PipesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

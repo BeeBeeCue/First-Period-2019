@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse, Pic, User } from '../../interfaces/pic';
+import { LoginResponse, Media, User } from '../../interfaces/pic';
 
 /*
   Generated class for the MediaProvider provider.
@@ -20,11 +20,11 @@ export class MediaProvider {
   }
 
   getAllMedia() {
-    return this.http.get<Pic[]>(this.mediaAPI + '/media');
+    return this.http.get<Media[]>(this.mediaAPI + '/media');
   }
 
   getSingleMedia(id) {
-    return this.http.get<Pic>(this.mediaAPI + '/media/' + id);
+    return this.http.get<Media>(this.mediaAPI + '/media/' + id);
   }
 
   login(user: User) {
