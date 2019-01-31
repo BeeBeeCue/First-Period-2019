@@ -6,18 +6,11 @@ import { selector } from 'rxjs/operator/publish';
 import { RegisterPage } from '../register/register';
 import { LoginRegisterPage } from '../login-register/login-register';
 
-/**
- * Generated class for the LogoutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
-  selector: 'page-logout',
-  templateUrl: 'logout.html',
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class LogoutPage {
+export class ProfilePage {
 
   constructor(
     public navCtrl: NavController,
@@ -27,21 +20,24 @@ export class LogoutPage {
   }
 
   ionViewWillEnter() {
-    this.logout();
+    this.profile();
   }
 
   ionViewDidLoad() {
-
-    console.log('ionViewDidLoad LogoutPage');
+    console.log('ionViewDidLoad ProfilePage');
   }
 
-  logout() {
+  profile() {
     this.navCtrl.push(LoginRegisterPage).catch(err => console.log(err));
     this.mediaProvider.loggedIn = false;
     console.log(this.mediaProvider.loggedIn);
     this.storage.clear().catch(err => console.log(err));
     console.log(this.storage);
-
   }
 
+  logout() {
+    localStorage.clear();
+    this.mediaProvider.loggedIn = false;
+    this.navCtrl.parent.select(0);
+  }
 }

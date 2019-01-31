@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LoginRegisterPage } from '../login-register/login-register';
-import { LogoutPage } from '../logout/logout';
+import { ProfilePage } from '../profile/profile';
 import { MediaProvider } from '../../providers/media/media';
 import { Storage } from '@ionic/storage';
 
@@ -24,21 +24,18 @@ import { Storage } from '@ionic/storage';
     </ion-tabs>`,
 })
 export class MenuPage {
-  tab1Root = HomePage;
-  tab2Root = LoginRegisterPage;
-  tab3Root = LogoutPage;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
     public mediaProvider: MediaProvider,
-    private storage: Storage
-  ) {
+    public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
 
+  tab1Root = HomePage;
+  tab2Root = LoginRegisterPage;
+  tab3Root = ProfilePage;
 
 }

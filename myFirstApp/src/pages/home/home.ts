@@ -1,8 +1,7 @@
+import { MediaProvider } from '../../providers/media/media';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
 import { Media } from '../../interfaces/pic';
-import { MediaProvider } from '../../providers/media/media';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,9 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  picArray: Observable<Media[]>;
-  mediaFilePath = 'http://media.mw.metropolia.fi/wbma/uploads/';
-
+  mediaArray: Observable<Media[]>;
 
   constructor(
     public navCtrl: NavController, private mediaProvider: MediaProvider) {
@@ -24,9 +21,8 @@ export class HomePage {
   }
 
   getAllFiles() {
-    this.mediaProvider.getAllMedia().subscribe((result: Media[]) => {
-      this.picArray = this.mediaProvider.getAllMedia();
-    });
+    this.mediaArray = this.mediaProvider.getAllMedia();
+    console.log('HELLOOOOOOOO');
   }
 
   showImage(fileId: number) {
@@ -38,6 +34,5 @@ export class HomePage {
       },
     );
   }
+
 }
-
-

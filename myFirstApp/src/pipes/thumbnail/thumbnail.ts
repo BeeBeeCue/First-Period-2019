@@ -22,7 +22,7 @@ export class ThumbnailPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
-  transform(id: number, ...args) {
+  async transform(id: number, ...args) {
     console.log(args[0]);
     // impure version:
     /*

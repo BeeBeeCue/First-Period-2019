@@ -2,29 +2,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse, Media, User } from '../../interfaces/pic';
 
-/*
-  Generated class for the MediaProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class MediaProvider {
 
-  mediaAPI = 'https://media.mw.metropolia.fi/wbma/';
+  mediaAPI = 'http://media.mw.metropolia.fi/wbma/';
+  mediaFilePath = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
   loggedIn = false;
+
+  user: User = null;
 
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');
   }
 
   getAllMedia() {
-    return this.http.get<Media[]>(this.mediaAPI + '/media');
+    return this.http.get<Media[]>(this.mediaAPI + 'media');
   }
 
-  getSingleMedia(id) {
-    return this.http.get<Media>(this.mediaAPI + '/media/' + id);
+  getSingleMedia(id: number) {
+    console.log(this.mediaAPI + id);
+    return this.http.get<Media>(this.mediaAPI + 'media/' + id);
   }
 
   login(user: User) {
@@ -32,7 +30,18 @@ export class MediaProvider {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
       }),
-    }; // TODO: add headers inside the object
-    return this.http.post<LoginResponse>(this.mediaAPI + 'login', user, httpOptions);
+    };
+    return this.http.post<LoginResponse>(this.mediaAPI + 'login',
+      user, httpOptions);
   }
+
+  getFilesByTag(tag) {
+    // single file
+    return this.http.get<Media[]>(this.mediaAPI + 'tags/' + tag);
+  }
+
+  // TODO: Add methods for:
+  // - checking if a username exist (http://media.mw.metropolia.fi/wbma/docs/#api-User-CheckUserName)
+  // - registration (http://media.mw.metropolia.fi/wbma/docs/#api-User-PostUser)
+
 }

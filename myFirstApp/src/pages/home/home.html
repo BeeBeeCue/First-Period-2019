@@ -7,16 +7,16 @@
 </ion-header>
 <ion-content>
   <ion-list padding>
-    <ion-item *ngFor="let m of picArray | async">
+    <ion-item *ngFor="let m of mediaArray | async">
       <ion-thumbnail item-start>
-        <img [src]="mediaFilePath + m.file_id | thumbnail: 'small' | async" [alt]="m.title">
+        <img [src]="mediaProvider.mediaFilePath + (m.file_id | thumbnail: 'small' | async)" [alt]="m.title">
       </ion-thumbnail>
       <h2>{{m.title}}</h2>
       <h3>{{m.description}}</h3>
       <h4>User id: {{m.user_id}}</h4>
       <h5>File size: {{m.filesize}}</h5>
       <h5>Time added: {{m.time_added | date: ('dd.MM.yyyy')}}</h5>
-      <button ion-button item-end>View</button>
+      <button ion-button clear item-end (click)="showImage(m.file_id)">View</button>
     </ion-item>
   </ion-list>
 

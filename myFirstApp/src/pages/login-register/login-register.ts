@@ -20,11 +20,18 @@ export class LoginRegisterPage {
 
   user: User = { username: null };
 
+  showRegister = false;
+  confirmPassword = '';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public mediaProvider: MediaProvider,
     private storage: Storage) {
+  }
+
+  swapLoginRegisterForms() {
+    this.showRegister = !this.showRegister;
   }
 
   ionViewDidLoad() {
@@ -40,17 +47,19 @@ export class LoginRegisterPage {
           catch(err => console.log(err));
         this.navCtrl.parent.select(0);
         console.log('The token is: ' + response.token);
-        //TODO: save the token to local storage
-        //move to home page
       },
       error => {
         console.log(error);
       });
 
   }
+  // TODO: Create alert function that pops up when register form is incorrect
 
   register() {
     this.navCtrl.push(RegisterPage).catch(err => console.log(err));
+    if (this.user.password !== this.confirmPassword) {
+      // show alert if the passwords don't match
+    }
   }
 
   // TODO: register method
