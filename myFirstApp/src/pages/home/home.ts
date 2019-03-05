@@ -1,8 +1,9 @@
 import { MediaProvider } from '../../providers/media/media';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Media } from '../../interfaces/pic';
+import { Media } from '../../interfaces/media';
 import { Observable } from 'rxjs';
+import { UploadPage } from '../upload/upload';
 
 @Component({
   selector: 'page-home',
@@ -10,6 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
   mediaArray: Observable<Media[]>;
+
+  uploadPage = UploadPage;
 
   constructor(
     public navCtrl: NavController, private mediaProvider: MediaProvider) {
@@ -22,7 +25,6 @@ export class HomePage {
 
   getAllFiles() {
     this.mediaArray = this.mediaProvider.getAllMedia();
-    console.log('HELLOOOOOOOO');
   }
 
   showImage(fileId: number) {

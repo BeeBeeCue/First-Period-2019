@@ -13,6 +13,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { IonicStorageModule } from '@ionic/storage';
 import { RegisterPage } from '../pages/register/register';
 import { PipesModule } from '../pipes/pipes.module';
+import { UploadPage } from '../pages/upload/upload';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PipesModule } from '../pipes/pipes.module';
     LoginRegisterPage,
     ProfilePage,
     MenuPage,
-    RegisterPage
+    RegisterPage,
+    UploadPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { PipesModule } from '../pipes/pipes.module';
     MenuPage,
     LoginRegisterPage,
     ProfilePage,
-    RegisterPage
+    RegisterPage,
+    UploadPage
   ],
   providers: [
     StatusBar,

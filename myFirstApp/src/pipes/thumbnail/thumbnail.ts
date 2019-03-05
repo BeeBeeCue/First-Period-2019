@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { MediaProvider } from '../../providers/media/media';
-import { Media } from '../../interfaces/pic';
+import { Media } from '../../interfaces/media';
 
 /**
  * Generated class for the ThumbnailPipe pipe.
@@ -23,7 +23,7 @@ export class ThumbnailPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   async transform(id: number, ...args) {
-    console.log(args[0]);
+    console.log(id);
     // impure version:
     /*
     if (this.cahchedId !== id) {
@@ -62,6 +62,7 @@ export class ThumbnailPipe implements PipeTransform {
             resolve(response.screenshot);
             break;
           default:
+            console.log(response.thumbnails);
             resolve(response.thumbnails.w160);
         }
       });

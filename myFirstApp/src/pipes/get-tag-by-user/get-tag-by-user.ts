@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { MediaProvider } from '../../providers/media/media';
-import { Media } from '../../interfaces/pic';
+import { Media } from '../../interfaces/media';
 
 /**
  * Generated class for the GetTagByUserPipe pipe.
@@ -16,13 +16,16 @@ export class GetTagByUserPipe implements PipeTransform {
   }
 
   async transform(tag: string) {
+    console.log(tag);
     return new Promise((resolve, reject) => {
       this.mediaProvider.getFilesByTag(tag).subscribe((files: Media[]) => {
+        console.log("fffff uuuuuu");
+
+        console.log(this.mediaProvider.user);
+
         files.forEach((file: Media) => {
           if (file.user_id === this.mediaProvider.user.user_id) {
             resolve(file.file_id);
-          } else {
-            reject('No profile image added.');
           }
         });
       });

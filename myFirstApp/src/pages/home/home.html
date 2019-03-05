@@ -3,13 +3,23 @@
     <ion-title>
       Ionic Blank
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button [navPush]="uploadPage" > Upload
+        <ion-icon large name ="cloud-upload" ></ion-icon>
+      </button>
+    </ion-buttons>
+
+
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-list padding>
-    <ion-item *ngFor="let m of mediaArray | async">
+    <ion-item *ngFor="let m of mediaArray | async ">
       <ion-thumbnail item-start>
-        <img [src]="mediaProvider.mediaFilePath + (m.file_id | thumbnail: 'small' | async)" [alt]="m.title">
+        <img *ngIf="m.media_type == 'image'" [src]="mediaProvider.mediaFilePath + (m.file_id | thumbnail: 'small' | async)" [alt]="m.title">
+        <video *ngIf="m.media_type == 'video'" [src]="mediaProvider.mediaFilePath + (m.file_id | thumbnail: 'screenshot')"></video>
+        <img *ngIf="m.media_type == 'audio'" src="../../assets/imgs/logo.png"/>
       </ion-thumbnail>
       <h2>{{m.title}}</h2>
       <h3>{{m.description}}</h3>

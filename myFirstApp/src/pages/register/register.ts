@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { User } from '../../interfaces/pic';
+import { User } from '../../interfaces/media';
 
 /**
  * Generated class for the RegisterPage page.
